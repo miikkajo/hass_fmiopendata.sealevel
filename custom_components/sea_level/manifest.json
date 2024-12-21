@@ -2,7 +2,7 @@
   "domain": "sea_level",
   "name": "Sea Level",
   "version": "1.0",
-  "requirements": ["fmiopendata"],
+  "requirements": ["fmiopendata==0.4.3"],
   "dependencies": [],
   "codeowners": ["@miikkajo"],
   "config_flow": true
