@@ -1,0 +1,9 @@
+{
+  "domain": "sea_level",
+  "name": "Sea Level",
+  "version": "1.0",
+  "requirements": ["fmiopendata"],
+  "dependencies": [],
+  "codeowners": ["@miikkajo"],
+  "config_flow": true
+}
