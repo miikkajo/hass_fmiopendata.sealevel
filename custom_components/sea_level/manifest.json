@@ -13,5 +13,6 @@
     "fmiopendata==0.4.3"
   ],
   "ssdp": [],
+  "version": "0.1",
   "zeroconf": []
 }
