@@ -1,9 +1,17 @@
 {
   "domain": "sea_level",
   "name": "Sea Level",
-  "version": "1.0",
-  "requirements": ["fmiopendata==0.4.3"],
+  "codeowners": [
+    "@miikkajo"
+  ],
+  "config_flow": true,
   "dependencies": [],
-  "codeowners": ["@miikkajo"],
-  "config_flow": true
+  "documentation": "https://www.home-assistant.io/integrations/sea_level",
+  "homekit": {},
+  "iot_class": "cloud_polling",
+  "requirements": [
+    "fmiopendata==0.4.3"
+  ],
+  "ssdp": [],
+  "zeroconf": []
 }
