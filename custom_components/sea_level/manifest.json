@@ -1,5 +1,5 @@
 {
-  "domain": "fmiopendata_sealevel",
+  "domain": "sea_level",
   "name": "Sea Level",
   "codeowners": [
     "@miikkajo"
