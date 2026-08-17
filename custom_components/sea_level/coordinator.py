@@ -68,6 +68,18 @@ class SeaLevelDataUpdateCoordinator(DataUpdateCoordinator):
             weather, self.weather_location, "Hourly maximum wind gust"
         )
 
+        # Attach wind direction to wind speed and gust forecasts
+        direction_by_time = {
+            entry["datetime"]: entry["value"]
+            for entry in self.wind_direction_forecast
+        }
+        for entry in self.wind_speed_forecast + self.wind_gust_forecast:
+            direction = direction_by_time.get(entry["datetime"])
+            entry["wind_direction"] = direction
+            entry["wind_direction_text"] = (
+                self._degrees_to_compass(direction) if direction is not None else None
+            )
+
     @staticmethod
     def _build_forecast(data, location, parameter):
         return [
@@ -77,3 +89,12 @@ class SeaLevelDataUpdateCoordinator(DataUpdateCoordinator):
             }
             for key in data.data
         ]
+
+    @staticmethod
+    def _degrees_to_compass(degrees):
+        compass_points = [
+            "N", "NNE", "NE", "ENE", "E", "ESE", "SE", "SSE",
+            "S", "SSW", "SW", "WSW", "W", "WNW", "NW", "NNW",
+        ]
+        index = round(degrees / 22.5) % 16
+        return compass_points[index]

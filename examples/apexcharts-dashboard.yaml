@@ -1,0 +1,66 @@
+type: custom:apexcharts-card
+graph_span: 48h
+span:
+  start: hour
+now:
+  show: true
+header:
+  title: Sea level forecast
+  standard_format: false
+  show: true
+  show_states: true
+  colorize_states: true
+series:
+  - entity: sensor.sea_level
+    type: column
+    show:
+      in_header: false
+    stroke:
+      width: 1
+    data_generator: |
+      return entity.attributes.forecast.map((entry) => {
+      return [new Date(entry.datetime), entry.value];
+      });
+  - entity: sensor.wind_speed
+    yaxis_id: wind
+    show:
+      in_header: true
+      header_color_threshold: true
+    data_generator: |
+      return entity.attributes.forecast.map((entry) => {
+      return [new Date(entry.datetime), entry.value];
+      });
+  - entity: sensor.wind_gust
+    yaxis_id: wind
+    show:
+      in_header: true
+      header_color_threshold: true
+    data_generator: |
+      return entity.attributes.forecast.map((entry) => {
+      return [new Date(entry.datetime), entry.value];
+      });
+  - entity: sensor.wind_direction
+    yaxis_id: wind_direction
+    type: column
+    show:
+      in_header: true
+    color: rgba(155, 89, 182, 0.5)
+    stroke:
+      width: 1
+    data_generator: |
+      return entity.attributes.forecast.map((entry) => {
+      return [new Date(entry.datetime), entry.value];
+      });
+yaxis:
+  - id: wind
+    show: true
+    opposite: true
+    min: 0
+  - id: wind_direction
+    show: true
+    opposite: true
+    min: 0
+    max: 360
+    decimals: 0
+    header:
+      show: false
