@@ -73,7 +73,7 @@ class SeaLevelDataUpdateCoordinator(DataUpdateCoordinator):
         return [
             {
                 "datetime": datetime.isoformat(key),
-                "value": float(data[key][location][parameter]["value"]),
+                "value": float(data.data[key][location][parameter]["value"]),
             }
-            for key in data
+            for key in data.data
         ]
